@@ -25,7 +25,6 @@ namespace MmmBank.Models
             if (result.Succeeded)
             {
                 userManager.AddToRole(admin.Id, "admin");
-                userManager.AddToRole(admin.Id, "moderator");
             }
 
             base.Seed(context);

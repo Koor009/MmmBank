@@ -65,6 +65,14 @@ namespace MmmBank.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            AccountRepository addDb = new AccountRepository();
+
+            if (userRepository.CheckAccount(model.Email))
+            {
+                ViewBag.Message = "your account was blocked";
+                return View();
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);

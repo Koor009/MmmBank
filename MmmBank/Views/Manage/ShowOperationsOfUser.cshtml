@@ -4,7 +4,7 @@
 
 <h1 class="text-center titleH2">Operations</h1>
 <div class="col-md-offset-3 col-md-6">
-    @using (Html.BeginForm("ShowOperations", "Manage", FormMethod.Get))
+    @using (Html.BeginForm("ShowOperationsOfUser", "Manage", FormMethod.Get))
     {
         <input type="hidden" id="page" name="page" value="@ViewBag.Page" />
         <button type="submit" class="btn btn-primary">Sort</button>
@@ -35,6 +35,6 @@
     <div class="text-center">
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) with @Model.PageCount
 
-        @Html.PagedListPager(Model, page => Url.Action("ShowOperations", new { page, sort = ViewBag.Sort }))
+        @Html.PagedListPager(Model, page => Url.Action("ShowOperationsOfUser", new { page, sort = ViewBag.Sort }))
     </div>
 </div>
