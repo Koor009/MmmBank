@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MmmBankDb.Models.Account>
+@using System.Linq;
+
+<h2 class="text-center alert alert-success">User Information</h2>
+<div class="row table-striped">
+    <div class="col-md-6 col-md-offset-3 panel-group">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.FirstName, "First name", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.FirstName, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.Surname, "Last name", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.Surname, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.PhoneNumber, "Phone number", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.PhoneNumber, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.Gender, "Gender", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.Gender, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.Email, "Email", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.Email, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.Country, "Country", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.Country, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.Sity, "Sity", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.Sity, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.Label(Model.FirstOrDefault().User.StreetAddress, "Address", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().User.StreetAddress, new { @class = "col-md-12 panel-body" })
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.LabelFor(m => m.FirstOrDefault().Balance, "Balance", new { @class = "col-md-12 panel-heading" })
+            @Html.DisplayFor(m => m.FirstOrDefault().Balance, new { @class = "col-md-12 panel-body" })
+
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            @Html.LabelFor(m => m.FirstOrDefault().Cards, "Card(s)", new { @class = "col-md-12 panel-heading" })
+            @foreach (var item in Model.FirstOrDefault().Cards)
+            {
+                <div class="panel-body">
+                    @item.Number
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

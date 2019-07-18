@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MmmBankDb.Models.Account>
+@if (Model.FirstOrDefault().User.StatusBlockedUser == false)
+{
+    <h1 class="text-center titleH2">Replenishment</h1><br />
+    <div class="container well">
+        @using (Html.BeginForm(actionName: "AccountReplenishment", controllerName: "Home", method: FormMethod.Post, htmlAttributes: new { @class = "form-horisontal", role = "form" }))
+        {
+            <div class="col-md-offset-2 col-md-4">
+                <p>Your balance: @Model.FirstOrDefault().Balance</p>
+                <div class="form-group">
+
+                    <div class="form-group">
+
+                        @Html.Label("get", "Form Send")<br>
+                        @Html.DropDownList("get", new SelectList(Model.FirstOrDefault().Cards.Select(c => c.Number)), new { @class = "form-control", @placeholder = "Select Card" })
+                    </div>
+                   
+                    <div class="form-group">
+                        @Html.Label("sum", "Send sum")<br>
+                        <input name="sum" id="sum" min="0.00" step="0.01" max="10000.00" class="form-control" type="number"  /><br>
+                    </div>
+                    <div class="form-group">
+                            <p><input type="submit" class="btn btn-danger col-md-12" value="Operation" /></p>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <img src="~/Content/Image/poplnit-balans-karty1-400x240.jpg" alt="Transfer" class="col-md-6" />
+            </div>
+        }
+    </div>
+}
+@if (Model.FirstOrDefault().User.StatusBlockedUser == true)
+{
+    <h2>Your account blocked</h2>
+}

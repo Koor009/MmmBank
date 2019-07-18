@@ -1,0 +1,46 @@
+﻿@Styles.Render("~/Content/StyleElement.css")
+
+<div class="container">
+    <div class="row"><br />
+        <H2 class="text-center">Control your staff</H2><br />
+        <div class="col-sm-6 col-md-6">
+            <div class="post">
+                <div class="post-img-content">
+                    <div style="background-color:orange; color:white" >
+                        <br /><br /><br />
+                                    <h3 class="text-center center-block">Adding a new manager will speed up the work of our bank</h3>
+                        <br /><br /><br /><br />
+                    </div>
+                    <span class="post-title">
+                    </span>
+                </div>
+                <div class="content">
+                    <br />
+                    <div class="text-center">
+                        
+                        @Html.ActionLink("New Moderator", "AddModerator", "Account", null, new { @class = "btn btn-warning btn-lg" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="post">
+                <div class="post-img-content">
+                    <div class="bg-primary">
+                        <br /><br /><br />
+                        <h3 class="text-center center-block">If an employee you do not need, you can remove his.</h3>
+                        <br /><br /><br /><br />
+                    </div>
+                    <span class="post-title">
+                    </span>
+                </div>
+                <div class="content">
+                    <br />
+                    <div class="text-center">
+                        @Html.ActionLink("Delete Moderator", "DelModerator", "Account", null, new { @class = "btn btn-primary btn-lg" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

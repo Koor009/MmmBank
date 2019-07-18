@@ -1,0 +1,46 @@
+﻿@Styles.Render("~/Content/Statys.css")
+<div class="container">
+    <div class="iconcontainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="iconbox">
+                    <div class="iconbox-icon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="featureinfo">
+                        <h4 class="text-center">Preparing for payment</h4>
+                        <div class="alert alert-info text-center">
+                            <div>
+                                @if (ViewBag.Send != null && ViewBag.Get != null && ViewBag.Sum != 0 )
+                                {
+                                    using (Html.BeginForm(actionName: "Payments", controllerName: "Home", method: FormMethod.Post, htmlAttributes: new { @class = "form-horisontal", role = "form" }))
+                                    {
+                                        <h3><span class="col-md-12">@ViewBag.Message</span></h3><br />
+                                        <input id="send" name="send" type="hidden" value=@ViewBag.Send />
+                                        <input id="get" name="get" type="hidden" value=@ViewBag.Get />
+                                        <input id="sum" name="sum" type="hidden" value=@ViewBag.Sum /><br />
+
+                                        <div class="row"><br />
+                                            <div class="col-md-2">
+                                                <button type="submit" class="btn btn-success btn-lg">Enter</button><br />
+                                            </div>
+                                            <div class="col-md-offset-8 col-md-2">
+                                                @Html.ActionLink("Сancel", "Payments", "Home", null, new { @class = "btn btn-danger btn-lg" });
+                                            </div>                                           
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Back to payment", "Payments", "Home", null, new { @class = "btn btn-danger btn-lg" });
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

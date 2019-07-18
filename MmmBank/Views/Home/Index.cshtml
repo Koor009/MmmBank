@@ -1,0 +1,90 @@
+﻿<div style="margin-bottom:3em;">
+    @if (User.IsInRole("admin"))
+    {<H2 class="alert alert-info text-center">Controll all people and working staff</H2><br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <form class="form-horizontal well" role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="~/Content/Image/person-png-blue-7.png" class="img-responsive img-radio "><br />
+
+                            </div>
+                            <div class="col-md-6">
+                                <img src="~/Content/Image/People .png" class="img-responsive img-radio "><br />
+                            </div>
+                            <div class="col-md-6">
+                                @Html.ActionLink("Control Employees", "Employees", "Home", null, new { @class = "btn btn-warning center-block" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.ActionLink("Users", "ShowUsers", "Manage", null, new { @class = "btn btn-info center-block" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+    @if (User.IsInRole("moderator"))
+    {<H2 class="alert alert-info text-center">Controll all people</H2><br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <form class="form-horizontal well" role="form">
+                        <div class="row">
+                            
+                            <div class="col-md">
+                                <img src="~/Content/Image/People .png" class="img-responsive img-radio "><br />
+                            </div>
+                           
+                            <div class="col-md">
+                                @Html.ActionLink("Users", "ShowUsers", "Manage", null, new { @class = "btn btn-info center-block" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+    @if (!User.IsInRole("admin") && !User.IsInRole("moderator"))
+    {
+        <div style="margin:auto; text-align: center;">
+            <H1 class="titleH2">Easy Bank for your work is the MMM Bank</H1>
+            <img src="~/Content/Image/perevod.png" role="img" alt="Transfer" />
+        </div>
+        <hr />
+        <h2 class="text-center">What is Internet banking?</h2>
+        <h3 class="text-justify titleH2">
+            Account management. In MMM Bank you can always view information about your accounts to control your cards and have access to your account.
+            Ease of operations. Light design and simple menu of functions allow you to make the most complex financial transactions in a matter of minutes.
+            Making money transfers, card management - all this can be done at home, without going to the bank.
+        </h3>
+        <hr />
+        <div class="link">
+            <div class="col-md-4 text-center">
+                <dl>
+                    <dd>@Html.ActionLink("Payments", "Payments", "Home", null, new { @class = "exct" })</dd>
+                    <dt>Transfers worldwide. You can pay using your cards.</dt>
+                </dl>
+            </div>
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <dl>
+                    <dd>@Html.ActionLink("Account Replenishment", "AccountReplenishment", "Home", null, new { @class = "exct" })</dd>
+                    <dt>Fast replenishment your card is the key to success for our bank.</dt>
+                </dl>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="~/Content/Image/Transfer.png" alt="transfer" width="250" />
+                </div>
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <img src="~/Content/Image/Card.png" alt="card" width="250" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

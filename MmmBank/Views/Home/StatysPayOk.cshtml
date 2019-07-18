@@ -1,0 +1,22 @@
+﻿@Styles.Render("~/Content/Statys.css")
+<div class="container">
+    <div class="iconcontainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="iconbox">
+                    <div class="iconbox-icon">
+                        <span class="glyphicon glyphicon-comment"></span>
+                    </div>
+                    <div class="featureinfo">
+                        <h4 class="text-center">Operation</h4>
+                        <div class="alert alert-info text-center">
+                            <h3>The operation was successful</h3>
+                        </div>
+                        @Html.ActionLink("Return to Payment", "Payments", "Home", null, new { @class = "btn btn-default btn-sm" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

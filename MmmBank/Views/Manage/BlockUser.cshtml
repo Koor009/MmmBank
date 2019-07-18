@@ -1,0 +1,21 @@
+﻿@Styles.Render("~/Content/Statys.css")
+<div class="container">
+    <div class="iconcontainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="iconbox">
+                    <div class="iconbox-icon">
+                        <span class="glyphicon glyphicon-book"></span>
+                    </div>
+                    <div class="featureinfo">
+                        <h4 class="text-center">Operation</h4>
+                        <div class="alert alert-danger text-center">
+                            <h3>@ViewBag.Message</h3>
+                        </div>
+                        @Html.ActionLink("Back", "ShowUsers", "Manage", null, new { @class = "btn btn-default btn-sm" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@Styles.Render("~/Content/Statys.css")
+<div class="container">
+    <div class="iconcontainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="iconbox">
+                    <div class="iconbox-icon">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                    </div>
+                    <div class="featureinfo">
+                        <h4 class="text-center">Operation</h4>
+                        <div class="alert alert-info text-center">
+                            <h3>@ViewBag.Message</h3>
+                        </div><br />
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.ActionLink("All users", "ShowUsers", "Manage", null, new { @class = "btn btn-default btn-lg" })
+                            </div>
+                            <div class="col-md-offset-8 col-md-2">
+                                @Html.ActionLink("Message", "UsersNotifications", "Home", null, new { @class = "btn btn-default btn-lg" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

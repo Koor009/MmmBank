@@ -1,0 +1,45 @@
+﻿@model MmmBankDb.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+<h2 class="text-center">@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <div class="row center-block container">
+    <h4 class="text-center">Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal ">
+        @if (User.IsInRole("admin, moderator"))
+        {
+            <dt>Show all users:</dt>
+            <dd class="col-md-4">
+                @Html.ActionLink("Users", "ShowUsers", null, new { @class = "form-group col-md-4" })<br />
+            </dd>
+
+        }
+
+
+        else if (User.IsInRole("user"))
+        {
+            <dt class="center-block">User information:</dt>
+            <dd>
+                @Html.ActionLink("User information", "UserInfo", null, new { @class = "btn btn-success form-group col-md-4" })<br />
+            </dd>
+            <dt class="center-block">Your operations:</dt>
+            <dd>
+                @Html.ActionLink("Operations", "ShowOperations", null, new { @class = "btn btn-danger form-group col-md-4" })<br />
+            </dd>
+
+        }
+
+        <dt>Password:</dt>
+        <dd>
+
+            @Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "btn btn-warning form-group col-md-4" })<br />
+
+        </dd>
+    </dl>
+</div>
+
+</div>

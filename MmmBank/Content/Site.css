@@ -1,0 +1,85 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+footer {
+    border-top: 2px solid black;
+    background-color: cornflowerblue;
+}
+
+.navbar {
+background-color: darkblue;
+}
+table.colorTable {
+    background-color:azure;
+}
+
+.link div dl dt{
+    font-size:200%;
+    color:mediumseagreen;   
+}
+.exct {
+    font-size: 200%;
+}
+.exct a:link {
+    color: blue;
+    text-decoration: none
+}
+.exct a:visited {
+    color: blue;
+    text-decoration: none
+}
+.exct a:hover {
+    color: blue;
+    text-decoration: none
+}
+div.ShowUsers {
+    padding-top:2em;
+}
+.verticalAlign {
+    padding-top:5em;
+}
+.section1 {
+    color: #fff;
+    background-color: #1E88E5;
+}
+
+.section2 {
+    color: #fff;
+    background-color: azure;
+}
+
+.section3 {
+    color: #fff;
+    background-color: #ff9800;
+}
+.titleH2 {
+    font-family: 'Passion One', cursive;
+    font-weight: 400;
+}
+.fontSize li{
+    color:white;
+    font-size:200%;
+}

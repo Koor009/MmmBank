@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MmmBankDb.Models.Account>
+
+@if (Model.FirstOrDefault().User.StatusBlockedUser == false)
+{
+    <div class="text-center">
+        <h2 class="text-success titleH2">Transfers</h2>
+    </div>
+    <div class="container well">
+        @using (Html.BeginForm(actionName: "Prepared", controllerName: "Home", method: FormMethod.Get, htmlAttributes: new { @class = "form-horisontal", role = "form" }))
+        {
+            <div class="col-md-offset-2 col-md-4">
+                <p>Your balance: @Model.FirstOrDefault().Balance</p>
+                <div class="form-group">
+
+                    <div class="">
+
+                        @Html.Label("send", "Select the card for transfer")<br>
+                        @Html.DropDownList("send", new SelectList(Model.FirstOrDefault().Cards.Where(c=>c.Blocker==false).Select(c => c.Number)), new { @class = "form-control", @placeholder = "Select Card" })
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            @Html.Label("get", "Enter the card number of the recipient")<br>
+                            @Html.TextBox("get", "", new { @class = "form-control", @pattern = "[0-9]{16,16}", @required= "required", @placeholder = "Recipient`s card number", @title = "Mast have number of card:0000111122223333" })<br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            @Html.Label("sum", "How much do you want to send of money?")<br>
+                            <input name="sum" id="sum"  min="0.00" step="0.01" max="10000.00" class="form-control" type="number" required  placeholder="enter cash" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <p><input type="submit" class="btn btn-danger col-md-12" value="Operation" /></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <img src="~/Content/Image/giving-money.jpg" alt="Transfer"   class="col-md-6"/>
+            </div>
+        }
+    </div>
+}
+@if (Model.FirstOrDefault().User.StatusBlockedUser == true)
+{
+    <h2>Your account blocked</h2>
+}

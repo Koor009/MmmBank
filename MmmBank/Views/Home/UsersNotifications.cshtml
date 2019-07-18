@@ -1,0 +1,62 @@
+﻿@model PagedList.IPagedList<MmmBankDb.Models.Account>
+@using PagedList.Mvc;
+<div class="ShowUsers">
+    <h1 class="text-center">Message</h1>
+    <div>
+        @using (Html.BeginForm("UsersNotifications", "Home", FormMethod.Get))
+        {
+            <input type="hidden" id="page" name="page" value="@ViewBag.Page" />
+            <button type="submit" class="btn btn-primary">Sort</button>
+            @Html.DropDownList("sort", new MultiSelectList(new string[] { "last name", "last name descending" }))
+        }
+        <br />
+        <table class="table table-bordered table-hover text-center colorTable">
+            <thead>
+                <tr>
+                    <td class="col-md-6">Message</td>
+                    <td class="col-md-4">Blocked card</td>
+                    <td class="col-md-2">Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-md-6">User: @item.User.FirstName @item.User.Surname want unblock card(s)</td>
+                        <td class="col-md-4">
+                            @foreach (var card in item.Cards)
+                            {
+                                @card.Number<br>
+                                if (card.Blocker == false)
+                                {
+                                    @Html.ActionLink("Block", "BlockUserCard", "Manage", new { numberCard = card.Number }, null)<br>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Unlock", "UnlockUserCard", "Manage", new { numberCard = card.Number }, null)<br>
+                                }
+
+                            }
+                        </td>
+                        <td class="col-md-2 ">
+                            @using (Html.BeginForm("UsersNotifications", "Home", FormMethod.Post))
+                            {
+
+                                <input type="hidden" id="page" name="page" value="@ViewBag.Page" />
+                                <input type="hidden" id="sort" name="sort" value="@ViewBag.Sort" />
+                                <input name="userId" id="userId" type="hidden" value="@item.User.Id" />
+                                <button type="submit">Delete</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div class="text-center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) with @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("UsersNotifications", "Home", new { page, sort = ViewBag.Sort }))
+    </div>
+</div>

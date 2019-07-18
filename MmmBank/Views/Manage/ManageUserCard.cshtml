@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MmmBankDb.Models.Account>
+
+
+<div class="row">
+    <h1 class="titleH2  text-center">Manage cards wherever you are</h1>
+    @if (Model.FirstOrDefault().User.StatusBlockedUser == false)
+    {
+        <div class="row section1 ">
+            <h2 class="text-center ">You should be aware of your expenses</h2><br />
+            <div class="col-md-6 text-center verticalAlign">
+                <h3>View your purchases, transactions and transfers in our bank it is safe, you will always be know</h3>
+                <h1><span class="text-danger">@Html.ActionLink("Operations", "ShowOperations", "Manage", new { @class= "btn btn-default btn-lg" })</span></h1><br />
+            </div>
+            <img src="~/Content/Image/creditcard-balance-transfer.png" class="col-md-4 col-md-offset-2" />
+        </div>
+        <div class="row section2">
+            <h2 class="text-center text-danger">If your card is in danger you can block it</h2>
+
+            <div class="col-md-6 verticalAlign">
+                <h3 class="text-warning text-center">Safety for our customers above all else, control your cards, Use MMM Bank - securely!</h3>
+                <h2 class="text-center">@Html.ActionLink("Control Card Security", "ControlCardSecurity", "Manage", new { @class = "btn btn-danger btn-lg " })</h2>
+            </div>
+            <img src="~/Content/Image/lostcardicon.png" class="col-md-6" />
+
+        </div>
+        <div class="row section3" style="padding-bottom:4em;">
+            <h2 class="text-center ">You have the opportunity to create several cards</h2>
+            <div class="col-md-6">
+                <br /><br /><br />
+                @if (Model.FirstOrDefault().Cards.Count() < 5)
+                {
+                    <h3 class="text-center">Our bank provides the opportunity to get a card online, everything is simple in our MMM Bank</h3>
+                    <h2 class="text-center">@Html.ActionLink("Create new card", "AddNewCard", "Manage", new { @class = "btn btn-info btn-lg text-center" })</h2>
+                }
+                else
+                {
+                    <p class="text-center verticalAlign" style="font-size:200%;">Unfortunately you have already gotten the maximum cards</p><br />
+                }
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <img src="~/Content/Image/Create-a-Credit-Card-Online.jpg" class="img-circle" alt="Create card" />
+            </div>
+
+        </div>
+
+
+    }
+    else
+    {
+        <div class="row text-center">
+            <h2 class="label label-danger">Your account blocked</h2>
+            <img src="~/Content/Image/Block-user.png" alt="Block User" />
+        </div>
+    }
+</div>
+

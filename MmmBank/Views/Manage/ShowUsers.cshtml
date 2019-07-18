@@ -1,0 +1,75 @@
+﻿@model PagedList.IPagedList<MmmBankDb.Models.Account>
+@using PagedList.Mvc;
+<div class="ShowUsers">
+
+    <h1 class="text-center">All users</h1>
+
+    @using (Html.BeginForm("ShowUsers", "Manage", FormMethod.Get))
+    {
+        <input type="hidden" id="page" name="page" value="@ViewBag.Page" />
+        <button type="submit" class="btn btn-primary">Sort</button>
+        @Html.DropDownList("sort", new MultiSelectList(new string[] { "name", "last name", "email" }))
+    }
+    <br />
+    <table class="table table-bordered table-hover text-center colorTable">
+        <thead>
+            <tr>
+                <td class="col-md-3">First Name</td>
+                <td class="col-md-3">LastName</td>
+                <td class="col-md-2">Email</td>
+                <td class="col-md-1">Operation</td>
+                <td class="col-md-1">More information</td>
+                <td class="col-md-1">Status user</td>
+                <td class="col-md-1">Blocked card</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="col-md-3">@item.User.FirstName</td>
+                <td class="col-md-3">@item.User.Surname</td>
+                <td class="col-md-2">@item.User.Email</td>
+                <td class="col-md-1">@Html.ActionLink("Operations", "ShowOperationsOfUser", "Manage",new { id = item.User.Id }, null)</td>
+
+                <td class="col-md-1">
+                    @using (Html.BeginForm("UserInfo", "Manage", FormMethod.Post))
+                    {
+                        <input id="id" name="id" type="hidden" value="@item.UserId" />
+                        <button type="submit" class="btn btn-link">Information</button>
+                    }
+                </td>
+                @if (item.User.StatusBlockedUser == true)
+                {
+                    <td class="col-md-1">@Html.ActionLink("Unblock", "UnlockUser", "Manage", new { email = item.User.Email }, null)</td>
+                }
+                @if (item.User.StatusBlockedUser == false)
+                {
+                    <td class="col-md-1">@Html.ActionLink("Block", "BlockUser", "Manage", new { email = item.User.Email }, null)</td>
+                }
+
+                <td class="col-md-1">
+                    @foreach (var card in item.Cards)
+                    {
+                        @card.Number<br>
+                        if (card.Blocker == false)
+                        {
+                            @Html.ActionLink("Block", "BlockUserCard", "Manage", new { numberCard = card.Number }, null)<br>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Unlock", "UnlockUserCard", "Manage", new { numberCard = card.Number }, null)<br>
+                        }
+
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) with @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("ShowUsers", new { page, sort = ViewBag.Sort }))
+    </div>
+</div>
